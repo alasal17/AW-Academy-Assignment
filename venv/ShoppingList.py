@@ -1,13 +1,12 @@
 import sqlite3
 from tabulate import tabulate
 import os
-import glob
 import pandas as pd
 import csv
-from pandas import DataFrame, merge
+from pandas import DataFrame
 import seaborn as sns
 import matplotlib.pyplot as plt
-import numpy as np
+
 
 
 # Creating and connect to database
@@ -179,7 +178,7 @@ class TacoFriday:
             print('')
             print("\u001b[33;1m")
             item = input('Enter item: ')
-            price = int(input('Enter price: '))
+            price = float(input('Enter price: '))
             c.execute("insert into taco_friday(item, price) values(?, ?)", (item, price))
             conn.commit()
 
@@ -473,26 +472,25 @@ class TacoFriday:
 
         subjects = ['cost', 'budget', 'left']
         bar_with = 10
-        indx = np.arange(len(subjects))
-        money_label = np.arange(-200, 500, 50)
-        x_label = np.arange(20, 120, 40)
+
 
         fig, ax = plt.subplots()
         ax.grid(zorder=0)
-        item_cost = ax.bar(10, cost_of_item, bar_with, color='y', label='cost')
-        bud = ax.bar(30, user_data_df, bar_with, color='g', label='budget')
-        left = ax.bar(50, user_data_df - cost_of_item, bar_with, color='r', label='money left')
+        ax.bar(10, cost_of_item, bar_with, color='y', label='cost')
+        ax.bar(30, user_data_df, bar_with, color='g', label='budget')
+        ax.bar(50, user_data_df - cost_of_item, bar_with, color='r', label='money left')
 
         plt.title('Visualization of your budget ')
 
-        side_text = plt.figtext(0.45, 0.05, f" {user_data_df} - {cost_of_item} = {after_payment}",
+        plt.figtext(0.45, 0.05, f" {user_data_df} - {cost_of_item} = {after_payment}",
                                     bbox=dict(facecolor='red'))
-        fig.savefig('../asset/images/budget.png', bbox_extra_artists=(side_text,), bbox_inches='tight')
+
 
         ax.set_ylabel('money')
 
         ax.set_xticklabels('')
         ax.legend()
+        fig.savefig('../asset/images/budget.png')
         plt.show()
 
         print(
