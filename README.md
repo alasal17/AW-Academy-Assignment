@@ -5,7 +5,7 @@
 Vi alle elsker taco fredag og jeg lagde en applikasjon som er bygd på Python og SQL og som kjøres op terminal vindu på datamaskinen.
 
 For å starte programmet må brukeren navigere til 
-** Assignment\venv\shoppinglist.py
+** Assignment\venv\shoppinglist.py **
 
 
 Package jeg brukte for applikasjonen er:
