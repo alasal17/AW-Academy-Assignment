@@ -53,10 +53,10 @@ Logo:	Logo mappen inneholder start og slutt logoen for 	applikasjonen. det er bi
 
 Grafere og beskrivelesen på dem
 Prices grafen: 
-![](asset/images/item_sum.PNG) 
+![](asset/images/item_sum.png) 
 Denne grafen viser hvor mye vært produkt koster.
 
 Budget grafen:
-![](asset/images/budget.PNG) 
+![](asset/images/budget.png) 
  
 Denne grafen viser hvor mye alt vil koste, hva budgetet er og hvor mye brukeren har igjen etter han/hun. Nedest i rød ser brukeren regnestukket. 
