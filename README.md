@@ -18,7 +18,7 @@ For å starte programmet må brukeren navigere til
 **- seaborn 	version 0.10.1**
 **- matplotlib	version 3.2.1**
 		
-For å sørge for at alle pakkene følger med anbefaler jeg at brukeren kjører >pip install Requirements.txt som man finner under ***assignment/Requirements.txt***
+For å sørge for at alle pakkene følger med anbefaler jeg at brukeren kjører <pip install Requirements.txt> som man finner under ***assignment/Requirements.txt***
 
 
 
