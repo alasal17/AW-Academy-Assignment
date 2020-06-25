@@ -26,10 +26,10 @@ For å sørge for at alle pakkene følger med anbefaler jeg at brukeren kjøerer
 ![](asset/images/startbilde.PNG) 
 Step 1: Når man starter applikasjonen Shoppinglist.py blir brukeren spurt om hans budsjett. Budsjettet er en float type.
 
- 
+![](asset/images/side2.PNG) 
 Step 2: Deretter kommer det opp en liste med muligheter på hva brukeren kan gjøre, og blir spurt om hva han vil gjøre. 
 
-
+![](asset/images/options.PNG) 
 Liste over oprasjonen som kan gjøres av brukeren
  
 Brukeren vil få opp en liste med hva han vil gjøre. Det hvite listen er oprasjoner som vises i terminalen mens det gule er grafer. 
@@ -53,8 +53,10 @@ Logo:	Logo mappen inneholder start og slutt logoen for 	applikasjonen. det er bi
 
 Grafere og beskrivelesen på dem
 Prices grafen: 
+![](asset/images/item_sum.PNG) 
 Denne grafen viser hvor mye vært produkt koster.
 
 Budget grafen:
+![](asset/images/budget.PNG) 
  
 Denne grafen viser hvor mye alt vil koste, hva budgetet er og hvor mye brukeren har igjen etter han/hun. Nedest i rød ser brukeren regnestukket. 
