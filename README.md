@@ -66,9 +66,14 @@ Denne grafen viser hvor mye alt vil koste, hva budgetet er og hvor mye brukeren 
 
 ## Kilder:
 https://docs.python.org/3/library/sqlite3.html
+
 https://www.w3schools.com/python/default.asp
+
 http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
+
 https://www.youtube.com
+
 https://docs.python.org/3/
+
 https://stackoverflow.com/
 
