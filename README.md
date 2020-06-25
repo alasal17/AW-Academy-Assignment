@@ -11,12 +11,12 @@ For å starte programmet må brukeren navigere til
 Package jeg brukte for applikasjonen er:
 
 **- sqlite3  	version 1.25.9
-- tabulate 	version 0.8.7**
-**- os
-- pandas 		version 1.0.3**
-**- csv
-- seaborn 		version 0.10.1**
-**- matplotlib	version 3.2.1**
+- tabulate 	version 0.8.7
+- os
+- pandas 		version 1.0.3
+- csv
+- seaborn 		version 0.10.1
+- matplotlib	version 3.2.1**
 		
 For å sørge for at alle pakkene følger med anbefaler jeg at brukeren kjøerer pip install Requirements.txt som man finner under ***assignment/Requirements.txt***
 
