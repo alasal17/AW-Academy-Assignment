@@ -2,9 +2,9 @@
  
 Taco fredag
  
-Vi alle elsker taco fredag og jeg lagde en applikasjon som er bygd på Python og SQL og som kjøres op terminal vindu på datamaskinen.
+Vi alle elsker taco fredag og jeg lagde en applikasjon som er bygd pÃ¥ Python og SQL og som kjÃ¸res op terminal vindu pÃ¥ datamaskinen.
 
-For å starte programmet må brukeren navigere til 
+For Ã¥ starte programmet mÃ¥ brukeren navigere til 
 Assignment\venv\shoppinglist.py
 
 
@@ -18,21 +18,21 @@ Package jeg brukte for applikasjonen er:
 - seaborn 		version 0.10.1
 - matplotlib	version 3.2.1
 		
-For å sørge for at alle pakkene følger med anbefaler jeg at brukeren kjøerer pip install Requirements.txt som man finner under assignment/Requirements.txt
+For Ã¥ sÃ¸rge for at alle pakkene fÃ¸lger med anbefaler jeg at brukeren kjÃ¸erer pip install Requirements.txt som man finner under assignment/Requirements.txt
 
 
 
+
+![](asset/images/startbilde.PNG) 
+Step 1: NÃ¥r man starter applikasjonen Shoppinglist.py blir brukeren spurt om hans budsjett. Budsjettet er en float type.
 
  
-Step 1: Når man starter applikasjonen Shoppinglist.py blir brukeren spurt om hans budsjett. Budsjettet er en float type.
+Step 2: Deretter kommer det opp en liste med muligheter pÃ¥ hva brukeren kan gjÃ¸re, og blir spurt om hva han vil gjÃ¸re. 
 
+
+Liste over oprasjonen som kan gjÃ¸res av brukeren
  
-Step 2: Deretter kommer det opp en liste med muligheter på hva brukeren kan gjøre, og blir spurt om hva han vil gjøre. 
-
-
-Liste over oprasjonen som kan gjøres av brukeren
- 
-Brukeren vil få opp en liste med hva han vil gjøre. Det hvite listen er oprasjoner som vises i terminalen mens det gule er grafer. 
+Brukeren vil fÃ¥ opp en liste med hva han vil gjÃ¸re. Det hvite listen er oprasjoner som vises i terminalen mens det gule er grafer. 
 
 
 Mappe struktur
@@ -41,9 +41,9 @@ Selve koden ligger under mappen venv/shoppinglist.py
 
 asset innholder flere under mapper. 
 
-csv: 	Mappen inneholder filer som jeg lagde av koden fra dataen 	fra database. Disse filene brukte jeg for å lage grafer. 
+csv: 	Mappen inneholder filer som jeg lagde av koden fra dataen 	fra database. Disse filene brukte jeg for Ã¥ lage grafer. 
 
-PS:  Jeg kunne enkelt brukt dataen direkte fra databasen men  	valgte å gjøre det på den måten for jeg ville lære meg 	hvordan man kan gjøre det. 
+PS:  Jeg kunne enkelt brukt dataen direkte fra databasen men  	valgte Ã¥ gjÃ¸re det pÃ¥ den mÃ¥ten for jeg ville lÃ¦re meg 	hvordan man kan gjÃ¸re det. 
 
 database: Er mappen som inneholder selve databasen.
 
@@ -51,10 +51,10 @@ images: I denne mappen lagrer jeg bilder fra grafene. Det er for 	   senere jeg 
 
 Logo:	Logo mappen inneholder start og slutt logoen for 	applikasjonen. det er bilder i ASCII
 
-Grafere og beskrivelesen på dem
+Grafere og beskrivelesen pÃ¥ dem
 Prices grafen: 
-Denne grafen viser hvor mye vært produkt koster.
+Denne grafen viser hvor mye vÃ¦rt produkt koster.
 
 Budget grafen:
  
-Denne grafen viser hvor mye alt vil koste, hva budgetet er og hvor mye brukeren har igjen etter han/hun. Nedest i rød ser brukeren regnestukket. 
+Denne grafen viser hvor mye alt vil koste, hva budgetet er og hvor mye brukeren har igjen etter han/hun. Nedest i rÃ¸d ser brukeren regnestukket. 
