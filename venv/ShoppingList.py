@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 
 # Creating and connect to database
-conn = sqlite3.connect('../asset/database/assiment.db')
+conn = sqlite3.connect(r'../asset/database/assiment.db')
 c = conn.cursor()
 
 # Clear terminal
@@ -46,9 +46,10 @@ def colorText(text):
 
 
 # Printing out an ASCII file /logo
-f = open("../asset/logo/start_logo.txt")
+f = open(r"../asset/logo/start_logo.txt")
 ascii = "".join(f.readlines())
 print(colorText(ascii))
+
 user_budget = float(input('What is your budget? '))
 
 
@@ -118,29 +119,8 @@ class TacoFriday:
 
     def display(self):
 
-        # Color style
-        COLORS = { \
-            "black": "\u001b[30;1m",
-            "red": "\u001b[31;1m",
-            "green": "\033[0;32m",
-            "yellow": "\u001b[33;1m",
-            "blue": "\u001b[34;1m",
-            "magenta": "\u001b[35m",
-            "cyan": "\u001b[36m",
-            "white": "\u001b[37m",
-            "yellow-background": "\u001b[43m",
-            "black-background": "\u001b[40m",
-            "cyan-background": "\u001b[46;1m",
-        }
-
-        # Function to loop throw colors
-        def colorText(text):
-            for color in COLORS:
-                text = text.replace("[[" + color + "]]", COLORS[color])
-            return text
-
         # Printing out an ASCII file / logo
-        f = open("../asset/logo/start_logo.txt")
+        f = open(r"../asset/logo/start_logo.txt")
         ascii = "".join(f.readlines())
         print(colorText(ascii))
 
@@ -212,12 +192,13 @@ class TacoFriday:
 
     def update(self):
         print("\u001b[33;1m")
-        update = input('Do you want to update item or price? ').lower()
+
 
         c.execute('select * from taco_friday')
         all_items = c.fetchall()
         # Update items
         if len(all_items) !=0:
+            update = input('Do you want to update item or price? ').lower()
             if update == 'item':
 
                 try:
@@ -242,7 +223,7 @@ class TacoFriday:
             elif update == 'price':
 
                 try:
-                    choice_item = str(input('Wish item do you want to update the price for?'))
+                    choice_item = str(input('Which item do you want to update the price for?'))
                     new_price = int(input('New price? '))
                     sql = "update taco_friday set price = ? where item = ? "
                     c.execute(sql, (new_price, choice_item))
@@ -346,41 +327,53 @@ class TacoFriday:
 
     def delete_item(self):
 
+        c.execute('select * from taco_friday')
+        all_items = c.fetchall()
+        # Delete items
+        if len(all_items) != 0:
 
+            print("\u001b[33;1m")
+            choice_item = str(input('Which item do you want to delete? '))
 
-        print("\u001b[33;1m")
-        choice_item = str(input('Wish item do you want to delete? '))
-
-
-        control = input(f"Are you sure you want to delete {choice_item} from item list? (Type yes or no) ").lower()
-        if control == 'yes':
-            sql = (f"DELETE from taco_friday where item = ?")
-            c.execute(sql, (choice_item,))
-            conn.commit()
-            print('\n Item is deleted!')
-            print("\u001b[34;1m \n")
+            control = input(f"Are you sure you want to delete {choice_item} from item list? (Type yes or no) ").lower()
+            if control == 'yes':
+                sql = (f"DELETE from taco_friday where item = ?")
+                c.execute(sql, (choice_item,))
+                conn.commit()
+                print('\n Item is deleted!')
+                print("\u001b[34;1m \n")
+            else:
+                print('\n Nothing is deleted')
+                print("\u001b[34;1m \n")
         else:
-            print('\n Nothing is deleted')
+            print("\n \033[0;31m", " EMPTY LIST!")
             print("\u001b[34;1m \n")
 
     def delete_list(self):
 
+        c.execute('select * from taco_friday')
+        all_items = c.fetchall()
+        # Delete list
+        if len(all_items) != 0:
 
-        print("\033[0;31m")
-        control = input('Are you sure you want to delete the shopping list? (yes or no) ').lower()
-        if control == 'yes':
-            c.execute('DROP TABLE taco_friday')
-            c.execute(
-                    'CREATE TABLE IF NOT EXISTS taco_friday(id INTEGER primary key AUTOINCREMENT, item varchar(55) not null unique, price int(55) not null)')
-            print('')
-            print("\u001b[33;1m", 'Shopping list is deleted')
-            print("\u001b[34;1m")
-            print('')
+            print("\033[0;31m")
+            control = input('Are you sure you want to delete the shopping list? (yes or no) ').lower()
+            if control == 'yes':
+                c.execute('DROP TABLE taco_friday')
+                c.execute(
+                        'CREATE TABLE IF NOT EXISTS taco_friday(id INTEGER primary key AUTOINCREMENT, item varchar(55) not null unique, price int(55) not null)')
+                print('')
+                print("\u001b[33;1m", 'Shopping list is deleted')
+                print("\u001b[34;1m")
+                print('')
+            else:
+                print('')
+                print("\u001b[33;1m", 'The list is not deleted')
+                print("\u001b[34;1m")
+                print('')
         else:
-            print('')
-            print("\u001b[33;1m", 'The list is not deleted')
-            print("\u001b[34;1m")
-            print('')
+            print("\n \033[0;31m", " EMPTY LIST!")
+            print("\u001b[34;1m \n")
 
     def new_item_list(self):
 
@@ -401,37 +394,43 @@ class TacoFriday:
             print("\u001b[34;1m \n")
 
     def check_prices_graph(self):
-        query1 = "select * from taco_friday"
 
+        c.execute('select * from taco_friday')
+        all_items = c.fetchall()
+        # Graph prices
+        if len(all_items) != 0:
 
+            query1 = "select * from taco_friday"
 
-        conne = sqlite3.connect('../asset/database/assiment.db', isolation_level=None, detect_types=sqlite3.PARSE_COLNAMES)
-        db_df = pd.read_sql_query(query1, conne)
-        db_df.to_csv('../asset/csv/items.csv', index=False)
+            conne = sqlite3.connect(r'../asset/database/assiment.db', isolation_level=None, detect_types=sqlite3.PARSE_COLNAMES)
+            db_df = pd.read_sql_query(query1, conne)
+            db_df.to_csv(r'../asset/csv/items.csv', index=False)
 
-        all_items_df = pd.read_csv('../asset/csv/items.csv')
+            all_items_df = pd.read_csv(r'../asset/csv/items.csv')
 
-        sns.barplot(x='item', y='price', hue='item', palette='winter', data=all_items_df)
-        plt.legend(ncol=2, loc='upper left')
+            sns.barplot(x='item', y='price', hue='item', palette='winter', data=all_items_df)
+            plt.legend(ncol=2, loc='upper left')
 
-        plt.savefig('../asset/images/item_sum.png')
-        plt.show()
+            plt.savefig(r'../asset/images/item_sum.png')
+            plt.show()
 
+        else:
+            print("\n \033[0;31m", " EMPTY LIST!")
+            print("\u001b[34;1m \n")
 
     def check_budget(self):
-
 
         # Create a CSV file with user input
         header = 'budget'
         dataset = {'id': 1, header: user_budget}
-        with open('../asset/csv/budget_dataset.csv', 'w', newline='') as userinput_file:
+        with open(r'../asset/csv/budget_dataset.csv', 'w', newline='') as userinput_file:
             fieldnames = ['id', 'budget']
             writer = csv.DictWriter(userinput_file, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerow(dataset)
 
         # Create a DataFrame from user input CSV file
-        budget = pd.read_csv('../asset/csv/budget_dataset.csv', sep=',')
+        budget = pd.read_csv(r'../asset/csv/budget_dataset.csv', sep=',')
         NO_INDEX = DataFrame.reset_index(budget)
         NO_INDEX.index = NO_INDEX['id']
         df = NO_INDEX.drop(['id'], axis=1)
@@ -442,11 +441,11 @@ class TacoFriday:
         # All items and prices from database
         query1 = "select * from taco_friday"
 
-        conne = sqlite3.connect('../asset/database/assiment.db', isolation_level=None, detect_types=sqlite3.PARSE_COLNAMES)
+        conne = sqlite3.connect(r'../asset/database/assiment.db', isolation_level=None, detect_types=sqlite3.PARSE_COLNAMES)
         db_df = pd.read_sql_query(query1, conne)
-        db_df.to_csv('../asset/csv/items_cost.csv', index=False)
+        db_df.to_csv(r'../asset/csv/items_cost.csv', index=False)
 
-        all_items_df = pd.read_csv('../asset/csv/items_cost.csv')
+        all_items_df = pd.read_csv(r'../asset/csv/items_cost.csv')
         how_many_items = all_items_df['id'].max()
         cost_of_item = all_items_df['price'].sum()
 
@@ -472,31 +471,16 @@ class TacoFriday:
 
         ax.set_xticklabels('')
         ax.legend()
-        fig.savefig('../asset/images/budget.png')
+        fig.savefig(r'../asset/images/budget.png')
         plt.show()
 
         print(
                 f"Cost of items is {cost_of_item} and your budget is {user_data_df}. It will be {user_data_df} - {cost_of_item} =",
                 user_data_df - cost_of_item)
 
-
     def close_program(self):
 
-        print('\u001b[33;1m The program is done.')
-
-        COLORS = { \
-            "black": "\u001b[30;1m",
-            "red": "\u001b[31;1m",
-            "green": "\033[0;32m",
-            "yellow": "\u001b[33;1m",
-            "blue": "\u001b[34;1m",
-            "magenta": "\u001b[35m",
-            "cyan": "\u001b[36m",
-            "white": "\u001b[37m",
-            "yellow-background": "\u001b[43m",
-            "black-background": "\u001b[40m",
-            "cyan-background": "\u001b[46;1m",
-        }
+        print('\u001b[33;1m The program is closed.')
 
         # Example printing out an ASCII file
         f = open("../asset/logo/close_logo.txt")
